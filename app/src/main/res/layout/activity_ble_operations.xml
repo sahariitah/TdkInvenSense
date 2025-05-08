@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background"
+        tools:context=".BleOperationsActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- App Logo at the Very Top -->
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="235dp"
+                android:layout_height="50dp"
+                android:layout_gravity="start"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                app:srcCompat="@drawable/tdk_invensense_logo_blue" />
+
+
+
+            <!-- MTU Container -->
+            <LinearLayout
+                android:id="@+id/mtu_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal" />
+
+            <!-- Characteristics Title -->
+            <TextView
+                android:id="@+id/characteristics_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/opensans"
+                android:text="Characteristics (tap to interact)"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Characteristics Container -->
+            <LinearLayout
+                android:id="@+id/characteristics_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/characteristics_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="103dp"
+                    android:scrollbarFadeDuration="0"
+                    android:scrollbars="vertical"
+                    tools:listitem="@layout/row_characteristic" />
+            </LinearLayout>
+
+            <!-- Log Section -->
+            <LinearLayout
+                android:id="@+id/log_container"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="230dp"
+                    android:layout_height="230dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp">
+
+                    <!-- Outer Circle (Gray) -->
+                    <View
+                        android:layout_width="230dp"
+                        android:layout_height="230dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_background_gray" />
+
+                    <!-- Inner Circle (Blue) -->
+                    <View
+                        android:layout_width="185dp"
+                        android:layout_height="185dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_background_blue" />
+
+                    <!-- Center Text -->
+                    <TextView
+                        android:id="@+id/log_text_view"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Range"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </FrameLayout>
+            </LinearLayout>
+
+
+
+
+            <!-- Fragment Container -->
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragment_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="100dp"
+                tools:layout="@layout/fragment_monitoring" />
+
+            <ImageView
+                android:id="@+id/nosignal"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="8dp"
+                android:layout_gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/door" />
+            <TextView
+                android:id="@+id/status_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="130dp"
+                android:layout_gravity="center"
+                android:text="A person is comming , Ciao!"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/opensans"
+                android:gravity="center"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+
+
+
+
+
+    </ScrollView>
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemIconTint="#92B5FF"
+        android:background="#FFFFFF"
+        android:layout_marginTop="27dp"
+        app:menu="@menu/bottom_navigation_menu"
+        app:labelVisibilityMode="labeled" />
+
+</RelativeLayout>
